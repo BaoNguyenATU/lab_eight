@@ -37,6 +37,11 @@ app.get('/api/movie/:id', async (req ,res)=>{
   res.json(movie);
 })
 
+app.delete('/api/movie/:id', async (req, res)=>{
+  const movie = await movieModel.findByIdAndDelete(req.params.id);
+  res.send(movie);
+})
+
 app.put('/api/movie/:id', async (req, res)=>{
   const movie = await movieModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
   res.send(movie);
